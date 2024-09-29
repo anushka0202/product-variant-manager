@@ -28,7 +28,7 @@ const ProductTable = () => {
     const existingIds = new Set(
       arr.map((item) => parseInt(item.id.split("-")[1]))
     );
-    let id = 1;
+    let id = arr.length + 1;
 
     while (existingIds.has(id)) {
       id++;

@@ -10,7 +10,7 @@ export default function Home() {
       <div className="flex justify-between items-center mb-4 py-4">
         <div className="flex items-center">
           <h1 className="text-xl font-bold mr-2">
-            Use different design for remaining SKU's
+            Use different design for remaining SKU&apos;s
           </h1>
           <Switch {...label} defaultChecked />
         </div>

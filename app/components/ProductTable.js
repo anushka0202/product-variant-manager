@@ -85,7 +85,11 @@ const ProductTable = () => {
                       <span>{variant.name}</span>
                       <Button
                         onClick={(e) => handleMenuClick(e, variant)}
-                        className="text-black min-w-6 p-1"
+                        sx={{
+                          color: "black",
+                          minWidth: "24px",
+                          padding: "4px",
+                        }}
                       >
                         <MoreVertical size={16} />
                       </Button>
@@ -141,7 +145,20 @@ const ProductTable = () => {
                                     <Button
                                       title="Add Product Filters"
                                       variant="outlined"
-                                      className="m-4 p-2 h-10 hover:bg-slate-100 bg-white text-center text-black border font-semibold border-gray-300 capitalize"
+                                      sx={{
+                                        color: "black",
+                                        height: "40px",
+                                        padding: "8px",
+                                        margin: "16px",
+                                        backgroundColor: "white",
+                                        textAlign: "center",
+                                        borderColor: "#d1d5db",
+                                        textTransform: "none",
+                                        fontWeight: 600,
+                                        ":hover": {
+                                          backgroundColor: "#f1f5f9",
+                                        },
+                                      }}
                                     >
                                       <Plus size={20} /> Add Product Filters
                                     </Button>
@@ -167,11 +184,24 @@ const ProductTable = () => {
                                 className="p-4 border-r border-gray-300 w-52 min-w-52 bg-gray-50"
                               >
                                 <div className="flex-1 flex flex-col items-center justify-center w-full h-40 bg-white border-2 border-dashed border-gray-300 rounded-lg p-2">
-                                  {state.filter == "New Filter"  ? (
+                                  {state.filter == "New Filter" ? (
                                     <Button
                                       title="Add Design"
                                       variant="outlined"
-                                      className="m-4 p-2 h-10 hover:bg-slate-100 bg-white text-center text-black border font-semibold border-gray-300 capitalize"
+                                      sx={{
+                                        color: "black",
+                                        height: "40px",
+                                        padding: "8px",
+                                        margin: "16px",
+                                        backgroundColor: "white",
+                                        textAlign: "center",
+                                        borderColor: "#d1d5db",
+                                        textTransform: "none",
+                                        fontWeight: 600,
+                                        ":hover": {
+                                          backgroundColor: "#f1f5f9",
+                                        },
+                                      }}
                                     >
                                       <Plus size={20} /> Add Design
                                     </Button>
@@ -195,7 +225,19 @@ const ProductTable = () => {
                                 title="Add Variant"
                                 onClick={addVariant}
                                 variant="outlined"
-                                className="m-4 p-2 h-10 min-w-10 hover:bg-slate-100 bg-white text-black border border-gray-300"
+                                sx={{
+                                  color: "black",
+                                  height: "40px",
+                                  minWidth: "40px",
+                                  padding: "8px",
+                                  margin: "16px",
+                                  backgroundColor: "white",
+                                  textAlign: "center",
+                                  borderColor: "#d1d5db",
+                                  ":hover": {
+                                    backgroundColor: "#f1f5f9",
+                                  },
+                                }}
                               >
                                 <Plus size={24} />
                               </Button>
@@ -215,7 +257,19 @@ const ProductTable = () => {
           title="Add State"
           onClick={addState}
           variant="outlined"
-          className="m-4 p-2 h-10 min-w-10 hover:bg-slate-100 bg-white text-black border border-gray-300"
+          sx={{
+            color: "black",
+            height: "40px",
+            minWidth: "40px",
+            padding: "8px",
+            margin: "16px",
+            backgroundColor: "white",
+            textAlign: "center",
+            borderColor: "#d1d5db",
+            ":hover": {
+              backgroundColor: "#f1f5f9",
+            },
+          }}
         >
           <Plus size={24} />
         </Button>
@@ -242,7 +296,11 @@ const ProductTable = () => {
         autoHideDuration={1200}
         TransitionComponent={Slide}
       >
-        <Alert variant="outlined" severity="success" className="bg-white">
+        <Alert
+          variant="outlined"
+          severity="success"
+          sx={{ backgroundColor: "white" }}
+        >
           {toast.message}
         </Alert>
       </Snackbar>

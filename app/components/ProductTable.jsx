@@ -93,6 +93,42 @@ const ProductTable = () => {
     setToast({ open: true, message: `${id} Removed` });
   };
 
+  const makePrimaryVariant = (id) => {
+    // Find the variant with id "variant-1"
+    let primaryVariantIndex = variants.findIndex(
+      (variant) => variant.id === "variant-1"
+    );
+
+    // Find the variant with the specified id
+    let updatedVariantIndex = variants.findIndex(
+      (variant) => variant.id === id
+    );
+
+    if (primaryVariantIndex === -1 || updatedVariantIndex === -1) {
+      console.error("One of the variants was not found.");
+      return;
+    }
+
+    // Swap the names of the two variants
+    let newVariants = [...variants]; // Create a copy of the array to avoid mutating state directly
+    [
+      newVariants[primaryVariantIndex].name,
+      newVariants[updatedVariantIndex].name,
+    ] = [
+      newVariants[updatedVariantIndex].name,
+      newVariants[primaryVariantIndex].name,
+    ];
+
+    // Swap the positions of the two variants
+    [newVariants[primaryVariantIndex], newVariants[updatedVariantIndex]] = [
+      newVariants[updatedVariantIndex],
+      newVariants[primaryVariantIndex],
+    ];
+
+    // Update the state with the new variants array
+    setVariants(newVariants);
+  };
+
   const handleMenuClick = (event, variant) => {
     setAnchorEl(event.currentTarget);
     setSelectedVariant(variant);
@@ -141,7 +177,7 @@ const ProductTable = () => {
             {/* Table Headings */}
             <thead>
               <tr>
-                <th className="p-4 text-center border-r border-gray-300 sticky left-0 bg-gray-50 ">
+                <th className="p-4 text-center border-r border-gray-300 sticky left-0 bg-gray-50 z-10">
                   Product Filter
                 </th>
                 {variants.map((variant) => (
@@ -186,13 +222,11 @@ const ProductTable = () => {
                             {...provided.dragHandleProps}
                             style={{
                               ...provided.draggableProps.style,
-                              background: snapshot.isDragging
-                                ? "lightblue"
-                                : "white",
+                              background: "white",
                             }}
                             className="relative group"
                           >
-                            <td className="p-4 border-r border-gray-300 sticky bg-gray-50 left-0 min-w-[550px]">
+                            <td className="p-4 border-r border-gray-300 sticky bg-gray-50 left-0 min-w-[550px] z-10">
                               <div className="flex items-center ">
                                 <div className="mr-4 flex flex-col gap-1 items-center">
                                   <button
@@ -395,6 +429,7 @@ const ProductTable = () => {
         handleCloseMenu={handleCloseMenu}
         selectedVariant={selectedVariant}
         removeVariant={removeVariant}
+        makePrimaryVariant={makePrimaryVariant}
       />
 
       {/* Design Selection Dialog */}

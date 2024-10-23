@@ -6,6 +6,7 @@ const VariantDropdownMenu = ({
   handleCloseMenu,
   selectedVariant,
   removeVariant,
+  makePrimaryVariant,
 }) => {
   return (
     <Menu
@@ -17,6 +18,13 @@ const VariantDropdownMenu = ({
         onClick={() => selectedVariant && removeVariant(selectedVariant.id)}
       >
         Delete Variant
+      </MenuItem>
+      <MenuItem
+        onClick={() =>
+          selectedVariant && makePrimaryVariant(selectedVariant.id)
+        }
+      >
+        Make Variant as Primary
       </MenuItem>
     </Menu>
   );
